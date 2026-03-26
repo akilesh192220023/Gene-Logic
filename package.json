@@ -1,44 +1,55 @@
-// Fallback for using MaterialIcons on Android and web.
-
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { SymbolWeight, SymbolViewProps } from 'expo-symbols';
-import { ComponentProps } from 'react';
-import { OpaqueColorValue, type StyleProp, type TextStyle } from 'react-native';
-
-type IconMapping = Record<SymbolViewProps['name'], ComponentProps<typeof MaterialIcons>['name']>;
-type IconSymbolName = keyof typeof MAPPING;
-
-/**
- * Add your SF Symbols to Material Icons mappings here.
- * - see Material Icons in the [Icons Directory](https://icons.expo.fyi).
- * - see SF Symbols in the [SF Symbols](https://developer.apple.com/sf-symbols/) app.
- */
-const MAPPING = {
-  'house.fill': 'home',
-  'paperplane.fill': 'send',
-  'chevron.left.forwardslash.chevron.right': 'code',
-  'chevron.right': 'chevron-right',
-  'magnifyingglass': 'search', // NCBI
-  'doc.text.magnifyingglass': 'description', // CHEMBL
-  'person.crop.circle': 'person', // Profile
-} as IconMapping;
-
-/**
- * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.
- * This ensures a consistent look across platforms, and optimal resource usage.
- * Icon `name`s are based on SF Symbols and require manual mapping to Material Icons.
- */
-export function IconSymbol({
-  name,
-  size = 24,
-  color,
-  style,
-}: {
-  name: IconSymbolName;
-  size?: number;
-  color: string | OpaqueColorValue;
-  style?: StyleProp<TextStyle>;
-  weight?: SymbolWeight;
-}) {
-  return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
+{
+  "name": "gene-logic",
+  "main": "expo-router/entry",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start",
+    "reset-project": "node ./scripts/reset-project.js",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "expo lint"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^14.1.0",
+    "@react-native-async-storage/async-storage": "^2.2.0",
+    "@react-navigation/bottom-tabs": "^7.3.10",
+    "@react-navigation/elements": "^2.3.8",
+    "@react-navigation/native": "^7.1.6",
+    "axios": "^1.11.0",
+    "eas-cli": "^16.17.4",
+    "expo": "~53.0.20",
+    "expo-blur": "~14.1.5",
+    "expo-cli": "^6.3.12",
+    "expo-constants": "~17.1.7",
+    "expo-font": "~13.3.2",
+    "expo-haptics": "~14.1.4",
+    "expo-image": "~2.4.0",
+    "expo-linking": "~7.1.7",
+    "expo-router": "~5.1.4",
+    "expo-splash-screen": "~0.30.10",
+    "expo-status-bar": "~2.2.3",
+    "expo-symbols": "~0.4.5",
+    "expo-system-ui": "~5.0.10",
+    "expo-web-browser": "~14.2.0",
+    "fast-xml-parser": "^5.2.5",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.5",
+    "react-native-gesture-handler": "~2.24.0",
+    "react-native-reanimated": "~3.17.4",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.11.1",
+    "react-native-web": "~0.20.0",
+    "react-native-webview": "13.13.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@types/react": "~19.0.10",
+    "@types/xml2js": "^0.4.14",
+    "eslint": "^9.25.0",
+    "eslint-config-expo": "~9.2.0",
+    "typescript": "~5.8.3"
+  },
+  "private": true
 }
